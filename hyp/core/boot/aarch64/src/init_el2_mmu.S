@@ -209,8 +209,11 @@ function aarch64_init_kaslr
 
 	bl	aarch64_init_generate_seed
 
-	// To test pathological seed, uncomment below
-	//mov	x0, 0
+	// To test pathological seed, define this below
+
+#if defined(DISABLE_KASLR) && DISABLE_KASLR
+	mov	x0, 0  
+#endif
 
 	// - calculate KASLR virtual base address
 local mm_calc_virt_base:
